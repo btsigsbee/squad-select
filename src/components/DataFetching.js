@@ -14,8 +14,8 @@ export default function DataFetching(){
         fetch("https://v2.api-football.com/fixtures/team/165/next/1", {
           "method": "GET",
           "headers": {
-              "x-rapidapi-host": "v3.football.api-sports.io",
-              "x-rapidapi-key": "101667642ea71b7b5066153b76cf897a"
+              "x-rapidapi-host": process.env.REACT_APP_HOST,
+              "x-rapidapi-key": process.env.REACT_APP_KEY
           }
 
       })
