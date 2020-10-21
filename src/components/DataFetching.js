@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Row from 'react-bootstrap/row';
 import Col from 'react-bootstrap/col';
 
+import {DateTime} from 'luxon';
+
 
  
 
@@ -59,6 +61,9 @@ export default function DataFetching(){
             
             :(<h1>Loading</h1>)}
         </Row>
+            <Row>{gameData.map((game) => (<Col>{DateTime.fromISO(game.event_date).toFormat('FFF')}</Col>))}</Row>
+            <Row>{gameData.map((game) => (<Col>{game.round}</Col>))}</Row>
+            
     </div>
 )
 }
