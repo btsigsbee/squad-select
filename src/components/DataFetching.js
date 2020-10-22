@@ -3,11 +3,19 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Row from 'react-bootstrap/row';
 import Col from 'react-bootstrap/col';
+import '../DataFetching.css';
 
 import {DateTime} from 'luxon';
 
 
- 
+function getForm(homeTeam, awayTeam){
+    
+   
+
+        fetch("https://api-football-v1.p.rapidapi.com/v2/statistics/{league_id}/{team_id}/{date}")
+  
+
+}
 
 export default function DataFetching(){
     const [gameData, setGameData] = useState([]);
@@ -29,23 +37,15 @@ export default function DataFetching(){
     }, [])
     console.log(gameData);
     return(
-    <div>
+    <div className='bg-success'>
          
-        <Row className='mt-2'>
-        <Col>
-        <h3>Home</h3>
         
-        </Col>
-        <Col>
-            <h3>Away</h3>
-        </Col>
-        </Row>
-        <Row>
+        <Row className='mt-5'>
         {gameData.length >0?(
-            gameData.map((game) =>(<Col className="col-lg-5" ><Row className="offset-md-4"key={game.homeTeam.team_id} >
+            gameData.map((game) =>(<Col className="col-lg-5 " ><Row className="offset-lg-4 "key={game.homeTeam.team_id} >
             
-            <h1 className="text-nowrap">{game.homeTeam.team_name}</h1>
-            <img className="img-fluid rounded float-right offset-md-1" width='50px' src={game.homeTeam.logo}></img>
+            <h1 className="team text-nowrap">{game.homeTeam.team_name}</h1>
+            <img className="img-fluid float-right rounded offset-lg-2 " width='65px' src={game.homeTeam.logo}></img>
             </Row>
             </Col>)))
             
@@ -53,9 +53,9 @@ export default function DataFetching(){
             <Col><h1>V</h1></Col>
             
             {gameData.length >0?(
-            gameData.map((game) =>(<Col className="col-lg-5"><Row key={game.awayTeam.team_id}>
-            <img className="img-fluid rounded float-left" width='50px' src={game.awayTeam.logo}></img>
-            <h1 className="text-nowrap offset-md-1">{game.awayTeam.team_name}</h1>
+            gameData.map((game) =>(<Col className="col-lg-5 "><Row key={game.awayTeam.team_id}>
+            <img className="img-fluid rounded float-left" width='65px' src={game.awayTeam.logo}></img>
+            <h1 className="team text-nowrap offset-md-1">{game.awayTeam.team_name}</h1>
             
             </Row></Col>)))
             
